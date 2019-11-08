@@ -1,29 +1,26 @@
 package com.example.demo.resources;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.demo.domain.User;
-import com.example.demo.services.UserService;
+import com.example.demo.dominio.Usuario;
+import com.example.demo.services.UsuarioService;
 
 @RestController
-@RequestMapping(value = "/users")
-public class UserResource {
+@RequestMapping(value = "/usuarios")
+public class UsuarioResource {
 	
 	@Autowired
-	private UserService service;
+	private UsuarioService service;
 	
 	@RequestMapping(method = RequestMethod.GET)
-	public ResponseEntity<List<User>> findAll(){
-		List<User> list = service.findAll();
+	public ResponseEntity<List<Usuario>> findAll(){
+		List<Usuario> list = service.findAll();
 		return ResponseEntity.ok().body(list);
 	} 
 	

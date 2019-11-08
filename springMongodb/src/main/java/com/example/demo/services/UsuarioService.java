@@ -5,16 +5,16 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.example.demo.domain.User;
-import com.example.demo.repository.UserRepository;
+import com.example.demo.dominio.Usuario;
+import com.example.demo.repository.UsuarioRepository;
 
 @Service
-public class UserService {
+public class UsuarioService {
 	
 	@Autowired
-	private UserRepository userRepository;
+	private UsuarioRepository userRepository;
 	
-	public List<User> findAll(){
+	public List<Usuario> findAll(){
 		return userRepository.findAll();
 	}
 }

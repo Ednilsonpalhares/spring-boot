@@ -1,23 +1,20 @@
-package com.example.demo.domain;
-
-import java.io.Serializable;
+package com.example.demo.dominio;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document(collation = "user")
-public class User implements Serializable{
-	
-	private static final long serialVersionUID = 1L;
-	
+@Document
+public class Usuario {
+
 	@Id
 	private String id;
 	private String name;
 	private String email;
 	
-	public User() {}
-
-	public User(String id, String name, String email) {
+	public Usuario() {}
+	
+	public Usuario(String id, String name, String email) {
+		super();
 		this.id = id;
 		this.name = name;
 		this.email = email;
@@ -63,7 +60,7 @@ public class User implements Serializable{
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		User other = (User) obj;
+		Usuario other = (Usuario) obj;
 		if (id == null) {
 			if (other.id != null)
 				return false;
@@ -71,4 +68,5 @@ public class User implements Serializable{
 			return false;
 		return true;
 	}
+	
 }
