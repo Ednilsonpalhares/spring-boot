@@ -25,14 +25,29 @@ public class UsuarioService {
 		Optional<Usuario> usuario = repo.findById(id);
 	
 		return usuario.orElseThrow(() -> new ObjectNotFoundException("Objeto não encontrado"));
-	
 	}
 	
 	public Usuario insert(Usuario obj) {
 		return repo.insert(obj);
 	}
 	
+	public void delete(String id) {
+		findById(id);
+		repo.deleteById(id);
+	}
+	
+	public Usuario update(Usuario obj) {
+		Usuario usuario = findById(obj.getId());
+		updateData(usuario, obj);
+		return repo.save(usuario);
+	}
+		
+	private void updateData(Usuario usuario, Usuario obj) {
+		usuario.setName(obj.getName());
+		usuario.setEmail(obj.getEmail());
+	}
+
 	public Usuario fromDTO(UsuarioDTO objDto) {
 		return new Usuario(objDto.getId(),objDto.getName(),objDto.getEmail());
-	}
+	} 
 }
